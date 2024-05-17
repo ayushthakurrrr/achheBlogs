@@ -14,8 +14,6 @@ import Editpost from './pages/Editpost.jsx'
 import Post from './pages/Post.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
