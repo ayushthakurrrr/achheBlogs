@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import appwriteService from "../appwrite/config";
 import { Container, Postcard } from '../components/index'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -10,7 +11,7 @@ function Home() {
     useEffect(() => {
         appwriteService.getPosts().then((data) => {
             console.log(data, 91)
-            
+
             if (data) {
                 console.log('postform')
                 setPosts(data.documents)
@@ -26,7 +27,9 @@ function Home() {
     if (!status) {
         return (
             <div>
-                Login to see posts.
+                <Link to='/login'>
+                    Login
+                </Link> to see posts.
             </div>
         )
     }
@@ -40,7 +43,11 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Currently no posts available, add some.
+                                Currently no posts available,
+                                <Link to='/add-post'>
+                                    add some
+                                </Link>
+                                .
                             </h1>
                         </div>
                     </div>
