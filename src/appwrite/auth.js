@@ -26,7 +26,7 @@ export class AuthService {
             }
 
         } catch (error) {
-            console.log("Error at createdAccount :: ", error)
+            throw error
         }
     }
 
@@ -37,8 +37,8 @@ export class AuthService {
             console.log("login2");
             return log;
         } catch (error) {
-            console.log("Error at login :: ", error)
-            // throw (error)
+            // console.log("Error at login :: ", error)
+            throw (error)
         }
     }
 

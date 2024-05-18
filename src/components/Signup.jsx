@@ -19,6 +19,7 @@ const Signup = () => {
     try {
       console.log(data, 1)
       const session = await authService.createAccount(data)
+      
       console.log(session, 88)
       if (session) {
         console.log(session, 'session22')
