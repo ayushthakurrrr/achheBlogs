@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function PostForm({ post }) {
-    const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
+    const { register, handleSubmit, watch, setValue, control, getValues, formState: { errors } } = useForm({
         defaultValues: {
             title: post?.title || "",
             slug: post?.$id || "",
@@ -21,8 +21,10 @@ export default function PostForm({ post }) {
 
     const submit = async (data) => {
         setError('')
+
         console.log(data, 41)
         if (post) {
+
             console.log(data, 42)
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
@@ -52,7 +54,7 @@ export default function PostForm({ post }) {
                     data.featuredImg = fileId;
                     console.log(userData.$id, 999)
                     const dbPost = await appwriteService.createPost({ ...data, UseId: userData.$id, postedBy: userData.name });
-                    
+
                     console.log(dbPost, 105)
                     if (dbPost) {
                         navigate(`/post/${dbPost.$id}`);
@@ -61,7 +63,7 @@ export default function PostForm({ post }) {
             } catch (error) {
                 setError(error.message)
             }
-           
+
         }
     };
 
@@ -89,13 +91,14 @@ export default function PostForm({ post }) {
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
             <div className="w-2/3 px-2">
-            {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+                {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
                 <Input
                     label="Title :"
                     placeholder="Title"
                     className="mb-4"
-                    {...register("title", { required: true })}
+                    {...register("title", { required: 'Title is required' })}
                 />
+                {errors.title && <p className="text-red-600">{errors.title.message}</p>}
                 <Input
                     label="Slug :"
                     placeholder="Slug"
@@ -116,6 +119,7 @@ export default function PostForm({ post }) {
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !post })}
                 />
+                {errors.image && <p className="text-red-600">Featured Image is required</p>}
                 {post && (
                     <div className="w-full mb-4">
                         <img
