@@ -4,7 +4,7 @@ import { useId } from 'react'
 const Select = ({
     options,
     label,
-    classname = '',
+    className = '',
     ...props
 }, ref) => {
     const id = useId();
@@ -12,7 +12,7 @@ const Select = ({
         <div>
             {/* Todo label && <label></label> */}
             <label htmlFor="id"></label>
-            <select id={id} {...props} ref={ref} className={`${classname}`}>
+            <select id={id} {...props} ref={ref} className={`${className}`}>
                 {options ? (options.map((item) => (
                     <option key={item} value={item}> {item} </option>
                 ))) : (null)}

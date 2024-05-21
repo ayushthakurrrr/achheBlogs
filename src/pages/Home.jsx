@@ -41,59 +41,30 @@ function Home() {
     else {
         if (!status) {
             return (
-                <div>
-                    <Link to='/login'>
-                        Login
-                    </Link> to see posts.
+                <div className='py-12 '>
+                    <Link className='font-bold text-3xl hover:text-gray-600' to='/login'>
+                        Login to see posts.
+                    </Link>
                 </div>
             )
         }
         else if (status && posts.length === 0) {
             return (
-                <div className="w-full py-8 mt-4 text-center">
-                    <Container>
-                        {console.log(posts)}
-                        {console.log(posts.length)}
-                        {console.log('nsdh')}
-                        <div className="flex flex-wrap">
-                            <div className="p-2 w-full">
-                                <h1 className="text-2xl font-bold hover:text-gray-500">
-                                    Currently no posts available,
-                                    <Link to='/add-post'>
-                                        add some
-                                    </Link>
-                                    .
-                                </h1>
-                            </div>
-                        </div>
-                    </Container>
+                <div className='py-12 '>
+                    <Link className='font-bold text-3xl hover:text-gray-600' to='/add-post'>
+                        Currently no posts available, Add some.
+                    </Link>
                 </div>
             )
         }
-        // if (posts.length === 0) {
-        //     return (
-        //         <div className="w-full py-8 mt-4 text-center">
-        //             <Container>
-        //                 {console.log('nsdh')}
-        //                 <div className="flex flex-wrap">
-        //                     <div className="p-2 w-full">
-        //                         <h1 className="text-2xl font-bold hover:text-gray-500">
-        //                             Add post
-        //                         </h1>
-        //                     </div>
-        //                 </div>
-        //             </Container>
-        //         </div>
-        //     )
-        // }
         else {
             return (
-                <div className='w-full py-12'>
+                <div className='w-full py-12 px-2'>
                     <Container >
-                        <div className='flex flex-wrap justify-center gap-6'>
+                        <div className='flex flex-wrap justify-center gap-8'>
                             {console.log('hgji')}
                             {posts.map((post) => (
-                                <div key={post.$id} className='w-1/4 min-w-52 p-2 flex justify-center items-center  bg-slate-200 rounded-sm'>
+                                <div key={post.$id} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200 rounded-md'>
                                     <Postcard {...post} />
                                 </div>
                             ))}

@@ -28,32 +28,32 @@ const MyPosts = () => {
 
     if (loader) {
         return (
-            <Loader/>)
+            <Loader />)
 
     } else {
         if (posts.length === 0) {
             return (
-                <div>
-                    No posts posted by you, <Link to='/add-post'>
-                        Post some
+                <div className='py-12 '>
+                    <Link className='font-bold text-3xl hover:text-gray-600' to='/add-post'>
+                        No posts posted by you, Post some.
                     </Link>
                 </div>
             )
         }
         else {
             return (
-                <div className='w-full py-12'>
-                <Container >
-                    <div className='flex flex-wrap justify-center gap-6'>
-                        {console.log('hgji')}
-                        {posts.map((post) => (
-                            <div key={post.$id} className='w-1/4 min-w-52 p-2 flex justify-center items-center  bg-slate-200 rounded-sm'>
-                                <Postcard {...post} />
-                            </div>
-                        ))}
-                    </div>
-                </Container>
-            </div>
+                <div className='w-full py-12 px-2'>
+                    <Container >
+                        <div className='flex flex-wrap justify-center gap-8'>
+                            {console.log('hgji')}
+                            {posts.map((post) => (
+                                <div key={post.$id} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200 rounded-md'>
+                                    <Postcard {...post} />
+                                </div>
+                            ))}
+                        </div>
+                    </Container>
+                </div>
             )
         }
     }
