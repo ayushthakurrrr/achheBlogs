@@ -2,7 +2,7 @@ import React from 'react'
 
 const Logo = () => {
   return (
-    <div>Logo</div>
+    <div className='font-bold text-2xl'>accheBlogs</div>
   )
 }
 

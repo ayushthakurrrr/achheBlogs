@@ -39,18 +39,18 @@ const Header = () => {
   return (
     <header>
       <Container >
-        <nav>
+        <nav className='flex justify-between flex-wrap'>
           <Link to="/">
             <Logo />
           </Link>
-          <ul>
-            {navItems.map((item) => ((item.active) ? (<li key={item.name}>
+          <ul className='flex  gap-6'>
+            {navItems.map((item) => ((item.active) ? (<li className='bg-[#6a5acd] text-white px-3 pb-1 py-0.5 rounded-md hover:bg-[#7878DC]' key={item.name}>
               <button onClick={() => ( navigate(item.slug) )}>{item.name}</button>
             </li>) : null))}
           </ul>
 
           {authStatus && (
-            <li>
+            <li className='list-none'>
               <LogoutBtn />
             </li>
           )}

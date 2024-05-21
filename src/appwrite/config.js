@@ -56,6 +56,7 @@ export class DatabaseService {
             )
         } catch (error) {
             console.log("Error at updatePost :: ", error)
+            throw error
         }
     }
 

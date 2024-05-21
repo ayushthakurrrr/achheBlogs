@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import databaseServiceObj from '../appwrite/config'
-import { useSelector } from 'react-redux'
+
 
 const Postcard = ({ $id, title, featuredImg, postedBy }) => {
 
@@ -11,8 +11,8 @@ const Postcard = ({ $id, title, featuredImg, postedBy }) => {
                 <div>
                     <img src={databaseServiceObj.previewFile(featuredImg)} alt={title} />
                 </div>
-                <h2>{title}</h2>
-                <h3>Posted by {postedBy}</h3>
+                <h2 className='text-lg font-bold'>{title}</h2>
+                <h3 className='font-light'>Posted by {postedBy}</h3>
             </div>
         </Link>
     )

@@ -3,6 +3,7 @@ import appwriteService from "../appwrite/config";
 import { Container, Postcard } from '../components/index'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -34,9 +35,7 @@ function Home() {
 
     if (loader) {
         return (
-            <h1>
-                Loader Home
-            </h1>
+           <Loader />
         )
     }
     else {
@@ -89,12 +88,12 @@ function Home() {
         // }
         else {
             return (
-                <div className='w-full py-8'>
+                <div className='w-full py-12'>
                     <Container >
-                        <div className='flex flex-wrap'>
+                        <div className='flex flex-wrap justify-center gap-6'>
                             {console.log('hgji')}
                             {posts.map((post) => (
-                                <div key={post.$id} className='p-2 w-1/4'>
+                                <div key={post.$id} className='w-1/4 min-w-52 p-2 flex justify-center items-center  bg-slate-200 rounded-sm'>
                                     <Postcard {...post} />
                                 </div>
                             ))}

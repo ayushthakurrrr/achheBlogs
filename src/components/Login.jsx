@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { logIn as storeLogin } from '../store/authSlice'
 import authService from '../appwrite/auth'
 import { Input, Button, Logo } from './index'
+import Loader from './Loader'
 
 const Login = () => {
   const [error, setError] = useState('')
@@ -40,7 +41,7 @@ const Login = () => {
 
 
   if (loader) {
-    return <div>Loader login</div>
+    return <Loader />
   }
   else {
     return (
