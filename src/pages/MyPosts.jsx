@@ -47,7 +47,7 @@ const MyPosts = () => {
                         <div className='flex flex-wrap justify-center gap-8'>
                             {console.log('hgji')}
                             {posts.map((post) => (
-                                <div key={post.$id} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200 rounded-md'>
+                                <div key={post.$id} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200  shadow-lg shadow-[#6a5acd] rounded-md'>
                                     <Postcard {...post} />
                                 </div>
                             ))}

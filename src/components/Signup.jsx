@@ -69,7 +69,7 @@ const Signup = () => {
               />
               {errors.name && <p className="text-red-600">Name is required</p>}
               <Input
-                label="Email: "
+                label="Email : "
                 placeholder="Enter your email"
                 type="email"
                 className=''
@@ -82,7 +82,7 @@ const Signup = () => {
                 })}
               />
               <Input
-                label="Password: "
+                label="Password : "
                 type="password"
                 placeholder="Enter your password"
                 {...register("password", {
@@ -90,7 +90,7 @@ const Signup = () => {
                 })}
               />
               {errors.password && <p className="text-red-600">Password is required</p>}
-              <Button type="submit" className="w-full" Children={'Create Account'} />
+              <Button type="submit" className="w-full bg-[#6a5acd] text-white px-3 pb-1 py-0.5 rounded-md hover:bg-[#7878DC]" Children={'Create Account'} />
 
             </div>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}

@@ -9,7 +9,7 @@ const Postcard = ({ $id, title, featuredImg, postedBy }) => {
         <Link to={`/post/${$id}`}>
             <div>
                 <div>
-                    <img src={databaseServiceObj.previewFile(featuredImg)} alt={title} />
+                    <img src={databaseServiceObj.previewFile(featuredImg)} alt={title} className='rounded-md' />
                 </div>
                 <h2 className='text-lg font-bold'>{title}</h2>
                 <h3 className='font-light'>Posted by {postedBy}</h3>

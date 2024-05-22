@@ -8,13 +8,6 @@ import Loader from '../Loader'
 const LogoutBtn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  // const logoutHandler = () => {
-  //     authService.logout()
-  //         .then(
-  //             dispatch(logOut())
-  //         )
-  //     navigate('/')
-  // }
 
   const logoutHandler = async () => {
     try {
@@ -26,10 +19,10 @@ const LogoutBtn = () => {
     }
   }
 
-    return (
-      <button className='bg-[#E32636] text-white px-3 pb-1 py-0.5 rounded-md hover:bg-[#F53E4D]' onClick={logoutHandler}>LogoutBtn</button>
-    )
-  }
+  return (
+    <button className='bg-[#E32636] text-white px-3 pb-1 py-0.5 rounded-md hover:bg-[#F53E4D]' onClick={logoutHandler}>Logout</button>
+  )
+}
 
 
 export default LogoutBtn
