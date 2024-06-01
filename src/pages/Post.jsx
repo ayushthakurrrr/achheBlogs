@@ -66,7 +66,7 @@ export default function Post() {
                     <div className="w-full">
                         <h1 className="text-2xl font-bold mb-5">{post.title}</h1>
                     </div>
-                    <div className="">
+                    <div className="p-3">
                         {parse(post.content)}
                     </div>
                     <div className="font-light text-end mr-6  mt-3">

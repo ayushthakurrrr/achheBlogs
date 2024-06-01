@@ -41,10 +41,10 @@ const Login = () => {
   }
   else {
     return (
-      <div className='flex items-center justify-center w-full py-12'>
-        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-          <h2 className="text-center text-2xl font-bold">Sign in to your account</h2>
-          <p className="mt-2 text-center text-base text-black/60">
+      <div className='flex items-center justify-center w-full py-16'>
+        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl py-5 px-2 sm:px-10 sm:py-12 border border-black/10`}>
+          <h2 className="text-center text-xl font-bold">Sign in to your account</h2>
+          <p className="text-center text-base text-black/60">
             Don't have any account?&nbsp;
             <Link
               to="/signup"
@@ -55,7 +55,7 @@ const Login = () => {
           </p>
 
           <form onSubmit={handleSubmit(login)}>
-            <div>
+            <div className='space-y-2 mt-4'>
               <Input
                 placeholder={'Enter your email'}
                 label={'Email : '}
@@ -73,7 +73,7 @@ const Login = () => {
 
               <Input
                 placeholder={'Enter your password'}
-                label={'Password :'}
+                label={'Password : '}
                 type={"password"}
 
                 {...register('password', {
@@ -85,7 +85,7 @@ const Login = () => {
               <Button
                 type={'submit'}
                 Children={'Next'}
-                className='bg-[#6a5acd] mt-2 text-white px-3 pb-0.5 rounded-md hover:bg-[#7878DC]'
+                className='bg-[#6a5acd] w-full mt-2 text-white px-3 pb-0.5 rounded-md hover:bg-[#7878DC]'
               />
             </div>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}

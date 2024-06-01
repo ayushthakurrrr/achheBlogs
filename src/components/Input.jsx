@@ -14,7 +14,7 @@ const Input = React.forwardRef((
   return (
     <div>
       {label && <label htmlFor='id'>{label}</label>}
-      <input type={type} id={id} placeholder={placeholder} className={`${classname}`} ref={ref} {...props} />
+      <input type={type} id={id} placeholder={placeholder} className={`${classname}`} ref={ref} {...props}  />
     </div>
   )
 })

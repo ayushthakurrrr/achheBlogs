@@ -41,9 +41,9 @@ const Signup = () => {
   else {
     return (
       <div className="flex items-center justify-center">
-        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-          <h2 className="text-center text-2xl font-bold">Sign up to create account</h2>
-          <p className="mt-2 mb-1 text-center text-base text-black/60">
+        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-2 sm:px-12 sm:pt-6 sm:pb-8 m-16 border border-black/10`}>
+          <h2 className="text-center text-xl font-bold">Sign up to create account</h2>
+          <p className="mb-4 text-center text-base text-black/60">
             Already have an account?&nbsp;
             <Link
               to="/login"
@@ -55,9 +55,9 @@ const Signup = () => {
           
 
           <form onSubmit={handleSubmit(createAcc)}>
-            <div className='space-y-5'>
+            <div className='space-y-2'>
               <Input
-                label="Full Name : "
+                label="Name : "
                 placeholder="Enter your full name"
                 {...register("name", {
                   required: true,
