@@ -13,10 +13,8 @@ function Editpost() {
     useEffect(() => {
         if (slug) {
             setLoader(true)
-            console.log(slug)
             appwriteService.getPost(slug).then((data) => {
                 if (data) {
-                    console.log(data, 121)
                     setPost(data)
                 }
             })

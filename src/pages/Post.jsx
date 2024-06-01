@@ -20,7 +20,6 @@ export default function Post() {
         if (slug) {
             setLoader(true)
             appwriteService.getPost(slug).then((post) => {
-                console.log(post, 111)
                 if (post) setPost(post);
                 else navigate("/");
             })
@@ -45,9 +44,8 @@ export default function Post() {
 
         return post ? (
             <div className="py-12">
-                {console.log(post, 112)}
                 <Container>
-                    <div className="w-full relative flex justify-center bg-slate-200 rounded-xl pt-11 pb-2">
+                    <div className="w-full relative flex justify-center bg-slate-200 rounded-xl pt-11 pb-11">
                         <img
                             src={appwriteService.previewFile(post.featuredImg)}
                             alt={post.title}

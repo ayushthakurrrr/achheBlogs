@@ -18,7 +18,6 @@ export class DatabaseService {
 
     async createPost({ title, content, featuredImg, slug, Status, UseId, postedBy }) {
         try {
-            console.log(Status, 103)
             let createPo = await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -32,7 +31,6 @@ export class DatabaseService {
                     postedBy
                 }
             )
-            console.log(createPo, 104)
             return createPo;
         } catch (error) {
             // console.log("Error at createPost :: ", error)
@@ -81,13 +79,11 @@ export class DatabaseService {
 
     async getPosts(queries = [Query.equal('Status', 'active')]) {
         try {
-            console.log(queries, 21)
             let postss = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries
             )
-            console.log(postss, 22)
             return postss
         } catch (error) {
             console.log("Error at getPosts :: ", error)
@@ -97,13 +93,11 @@ export class DatabaseService {
 
     async myposts(userId, queries) {
         try {
-            console.log(queries, 21)
             let postss = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries = [Query.equal('UseId', userId)]
             )
-            console.log(postss, 22)
             return postss
         } catch (error) {
             console.log("Error at getPosts :: ", error)
@@ -115,13 +109,11 @@ export class DatabaseService {
 
     async uploadFile(file) {
         try {
-            console.log(file, 43)
             let fileData = await this.storage.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
                 file
             )
-            console.log(fileData, 44)
             return fileData
         } catch (error) {
             console.log("Error at uploadFile :: ", error)
@@ -131,13 +123,11 @@ export class DatabaseService {
 
     async deleteFile(fileId) {
         try {
-            console.log(fileId, 46);
             let deleteData = await this.storage.deleteFile(
                 conf.appwriteBucketId,
                 fileId
             )
             // return true
-            console.log(deleteData, 47);
             return deleteData
         } catch (error) {
             console.log("Error at deleteFile :: ", error)

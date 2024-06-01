@@ -9,7 +9,6 @@ export class AuthService {
         this.client
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
-
         this.account = new Account(this.client)
     }
 
@@ -17,11 +16,10 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name)
             if (userAccount) {
-                console.log(userAccount, 26)
+                
                 return this.login({ email, password });
             }
             else {
-                console.log(userAccount, 36)
                 return userAccount
             }
 
@@ -32,9 +30,7 @@ export class AuthService {
 
     async login({ email, password }) {
         try {
-            console.log(email, password, 1);
             let log = await this.account.createEmailPasswordSession(email, password);
-            console.log("login2");
             return log;
         } catch (error) {
             // console.log("Error at login :: ", error)

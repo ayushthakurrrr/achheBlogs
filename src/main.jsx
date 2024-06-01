@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -13,6 +13,7 @@ import AddPost from './pages/AddPost.jsx'
 import Editpost from './pages/Editpost.jsx'
 import Post from './pages/Post.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import appwriteService from './appwrite/config'
 
 
 

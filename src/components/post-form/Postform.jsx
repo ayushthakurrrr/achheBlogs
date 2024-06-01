@@ -25,23 +25,17 @@ export default function PostForm({ post }) {
         setError('')
         setLoader(true)
 
-        console.log(data, 41)
         if (post) {
             try {
-                console.log(data, 42)
                 const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
                 if (file) {
-                    console.log(file, 45)
                     appwriteService.deleteFile(post.featuredImg);
                 }
-                console.log(file, 99)
-                console.log(post, 'post')
                 const dbPost = await appwriteService.updatePost(post.$id, {
                     ...data,
                     featuredImg: file ? file.$id : undefined,
                 });
-                console.log(dbPost, 'img')
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
@@ -53,18 +47,12 @@ export default function PostForm({ post }) {
 
         } else {
             try {
-                console.log('100')
-                console.log(data, '100 ke bad')
                 const file = await appwriteService.uploadFile(data.image[0]);
-                console.log(file, 101)
                 if (file) {
-                    console.log(data, 102)
                     const fileId = file.$id;
                     data.featuredImg = fileId;
-                    console.log(userData.$id, 999)
                     const dbPost = await appwriteService.createPost({ ...data, UseId: userData.$id, postedBy: userData.name });
 
-                    console.log(dbPost, 105)
                     if (dbPost) {
                         navigate(`/post/${dbPost.$id}`);
                     }
@@ -134,7 +122,7 @@ export default function PostForm({ post }) {
                         />
                         {errors.image && <p className="text-red-600">Featured Image is required</p>}
                         {post && (
-                            <div className="w-full mt-3">
+                            <div className="w-full mt-3 text-center">
                                 <img
                                     src={appwriteService.previewFile(post.featuredImg)}
                                     alt={post.title}

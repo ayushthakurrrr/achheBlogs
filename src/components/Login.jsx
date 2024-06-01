@@ -20,16 +20,12 @@ const Login = () => {
     setLoader(true)
     setError('')
     try {
-      console.log(data, '71')
       const session = await authService.login(data)
-      console.log(session, 72)
       if (session) {
         const userData = await authService.getCurrentUser()
-        console.log(userData, 73)
         if (userData) {
           dispatch(storeLogin({ userData: userData }))
         }
-        console.log(data, '74')
 
         navigate('/')
       }

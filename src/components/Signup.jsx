@@ -20,15 +20,11 @@ const Signup = () => {
     setError('')
     setLoader(true)
     try {
-      console.log(data, 1)
       const session = await authService.createAccount(data)
 
-      console.log(session, 88)
       if (session) {
-        console.log(session, 'session22')
         const userData = await authService.getCurrentUser()
         if (userData) {
-          console.log(userData, 3)
           dispatch(storeLogin({ userData: userData }))
         }
         navigate('/')
