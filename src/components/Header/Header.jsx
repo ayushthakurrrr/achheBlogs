@@ -232,8 +232,8 @@ const Header = () => {
               <ul className={`absolute md:static w-28 md:w-full rounded-md shadow-lg md:shadow-none shadow-gray-600 p-2 right-2 mt-2 md:mt-0 ${isDropdownOpen ? 'block' : 'hidden'} md:flex md:gap-2`}>
                 {navItems.map((item) => (
                   item.active ? (
-                    <li className='bg-[#6a5acd] text-white px-3 pb-1 py-0.5 mt-0.5 md:mt-0 rounded-md hover:bg-[#7878DC]' key={item.name}>
-                      <button onClick={() => navigate(item.slug)}>{item.name}</button>
+                    <li key={item.name}>
+                      <button className='bg-[#6a5acd] text-white w-full px-3 pb-1 py-0.5 mt-0.5 md:mt-0 rounded-md hover:bg-[#7878DC]' onClick={() => navigate(item.slug)}>{item.name}</button>
                     </li>
                   ) : null
                 ))}

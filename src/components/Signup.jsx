@@ -41,7 +41,7 @@ const Signup = () => {
   else {
     return (
       <div className="flex items-center justify-center">
-        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-2 sm:px-12 sm:pt-6 sm:pb-8 m-20 border border-black/10`}>
+        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-2 py-16 sm:px-12 sm:pt-10 sm:pb-12 m-20 border border-black/10`}>
           <h2 className="text-center text-xl font-bold">Sign up to create account</h2>
           <p className="mb-4 text-center text-base text-black/60">
             Already have an account?&nbsp;
