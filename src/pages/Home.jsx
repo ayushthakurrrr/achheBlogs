@@ -36,7 +36,7 @@ function Home() {
     else {
         if (!status) {
             return (
-                <div className='h-screen flex justify-center'>
+                <div className='h-96 flex justify-center'>
                     <Link className='font-bold text-3xl hover:text-gray-600 content-center' to='/login'>
                         Login to see blogs.
                     </Link>

@@ -41,8 +41,8 @@ const Login = () => {
   }
   else {
     return (
-      <div className='flex items-center justify-center w-full py-16'>
-        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl py-5 px-2 sm:px-10 sm:py-12 border border-black/10`}>
+      <div className='flex items-center justify-center w-full py-20'>
+        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl py-10 px-2 sm:px-10 sm:py-12 border border-black/10`}>
           <h2 className="text-center text-xl font-bold">Sign in to your account</h2>
           <p className="text-center text-base text-black/60">
             Don't have any account?&nbsp;
@@ -55,7 +55,7 @@ const Login = () => {
           </p>
 
           <form onSubmit={handleSubmit(login)}>
-            <div className='space-y-2 mt-4'>
+            <div className='space-y-3 mt-4 text-center'>
               <Input
                 placeholder={'Enter your email'}
                 label={'Email : '}

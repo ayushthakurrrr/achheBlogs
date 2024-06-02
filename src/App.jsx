@@ -28,7 +28,7 @@ function App() {
   }, [])
 
   return (!isLoading) ? (
-    <div >
+    <div className='min-h-screen'>
       <Header />
       <Outlet />
       <Footer />

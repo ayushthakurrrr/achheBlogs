@@ -91,7 +91,7 @@ export default function PostForm({ post }) {
         return (
             <form onSubmit={handleSubmit(submit)} className="flex flex-wrap py-6 my-12 bg-slate-200">
                 <div className=" w-full px-6 flex flex-wrap justify-center">
-                    <div className="w-full flex flex-wrap justify-center">
+                    <div className="w-full flex flex-wrap justify-center gap-3">
                         <div>
                         <Input
                             label="Title : "

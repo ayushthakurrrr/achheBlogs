@@ -218,7 +218,7 @@ const Header = () => {
   }, [dropdownRef]); // Re-run effect when dropdownRef changes
 
   return (
-    <header>
+    <header className='sticky top-0 py-4 z-20 bg-white'>
       <Container >
         <nav className='flex justify-between items-center flex-wrap'>
           <Link to="/">

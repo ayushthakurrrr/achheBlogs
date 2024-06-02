@@ -63,7 +63,7 @@ export default function Post() {
                         )}
                     </div>
         
-                    <div className="w-full">
+                    <div className="w-full text-center">
                         <h1 className="text-2xl font-bold mb-5">{post.title}</h1>
                     </div>
                     <div className="p-3">
