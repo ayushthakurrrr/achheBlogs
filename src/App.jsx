@@ -6,7 +6,7 @@ import authService from "./appwrite/auth";
 import { logIn, logOut } from './store/authSlice';
 import { Footer, Header } from './components';
 import { Outlet } from 'react-router-dom';
-import Loader from './components/Loader';
+import Loader2 from './components/Loader2';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -33,7 +33,7 @@ function App() {
       <Outlet />
       <Footer />
     </div>
-  ) : <Loader />
+  ) : <Loader2 />
 
 }
 

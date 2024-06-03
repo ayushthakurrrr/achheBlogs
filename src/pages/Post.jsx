@@ -4,7 +4,7 @@ import appwriteService from "../appwrite/config";
 import { Button, Container } from '../components/index';
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
-import Loader from "../components/Loader";
+import Loader3 from "../components/Loader3";
 
 export default function Post() {
     const [post, setPost] = useState(null);
@@ -39,7 +39,7 @@ export default function Post() {
     };
 
     if (loader) {
-        return <Loader />
+        return <Loader3 />
     } else {
 
         return post ? (

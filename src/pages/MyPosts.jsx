@@ -3,7 +3,7 @@ import service from '../appwrite/config'
 import { Container, Postcard } from '../components/index'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Loader from '../components/Loader'
+import Loader2 from '../components/Loader2'
 
 const MyPosts = () => {
 
@@ -25,13 +25,13 @@ const MyPosts = () => {
 
     if (loader) {
         return (
-            <Loader/>)
+            <Loader2 />)
 
     } else {
         if (posts.length === 0) {
             return (
-                <div className='py-12 '>
-                    <Link className='font-bold text-3xl hover:text-gray-600' to='/add-post'>
+                <div className='h-96 flex justify-center'>
+                    <Link className='font-bold text-3xl hover:text-gray-600 content-center' to='/add-post'>
                         No posts posted by you, Post some.
                     </Link>
                 </div>

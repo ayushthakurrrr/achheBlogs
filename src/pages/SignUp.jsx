@@ -3,7 +3,7 @@ import { Signup as SignupComp } from '../components/index'
 
 const SignUp = () => {
     return (
-        <div>
+        <div className='my-32'>
             <SignupComp />
         </div>
     )

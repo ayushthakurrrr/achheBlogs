@@ -3,7 +3,7 @@ import appwriteService from "../appwrite/config";
 import { Container, Postcard } from '../components/index'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Loader from '../components/Loader';
+import Loader2 from '../components/Loader2';
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -15,7 +15,6 @@ function Home() {
             .then((data) => {
                 if (data) {
                     setPosts(data.documents)
-
                 }
                 else {
                     setPosts([])
@@ -30,13 +29,13 @@ function Home() {
 
     if (loader) {
         return (
-           <Loader />
+           <Loader2 />
         )
     }
     else {
         if (!status) {
             return (
-                <div className='h-96 flex justify-center'>
+                <div className='h-96 my-20 flex justify-center'>
                     <Link className='font-bold text-3xl hover:text-gray-600 content-center' to='/login'>
                         Login to see blogs.
                     </Link>
@@ -45,8 +44,8 @@ function Home() {
         }
         else if (status && posts.length === 0) {
             return (
-                <div className='py-12 '>
-                    <Link className='font-bold text-3xl hover:text-gray-600' to='/add-post'>
+                <div className='h-96 my-20 flex justify-center'>
+                    <Link className='font-bold text-3xl hover:text-gray-600 ' to='/add-post'>
                         Currently no posts available, Add some.
                     </Link>
                 </div>
