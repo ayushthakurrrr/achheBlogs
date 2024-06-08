@@ -4,7 +4,10 @@ import { Button, Input, RTE, Select } from "../index";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Loader from "../Loader";
+import { useDispatch } from "react-redux";
+import { addPost } from "../../store/postSlice";
+import { updatePost } from "../../store/postSlice";
+import Loader3 from "../Loader3";
 
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues, formState: { errors } } = useForm({
@@ -20,6 +23,7 @@ export default function PostForm({ post }) {
     const [loader, setLoader] = useState(false)
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
+    const dispatch = useDispatch()
 
     const submit = async (data) => {
         setError('')
@@ -37,6 +41,7 @@ export default function PostForm({ post }) {
                     featuredImg: file ? file.$id : undefined,
                 });
                 if (dbPost) {
+                    dispatch(updatePost(dbPost))
                     navigate(`/post/${dbPost.$id}`);
                 }
 
@@ -52,8 +57,8 @@ export default function PostForm({ post }) {
                     const fileId = file.$id;
                     data.featuredImg = fileId;
                     const dbPost = await appwriteService.createPost({ ...data, UseId: userData.$id, postedBy: userData.name });
-
                     if (dbPost) {
+                        dispatch(addPost(dbPost))
                         navigate(`/post/${dbPost.$id}`);
                     }
                 }
@@ -86,20 +91,20 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     if (loader) {
-        return <Loader />
+        return <Loader3 />
     } else {
         return (
             <form onSubmit={handleSubmit(submit)} className="flex flex-wrap py-6 my-12 bg-slate-200">
                 <div className=" w-full px-6 flex flex-wrap justify-center">
                     <div className="w-full flex flex-wrap justify-center gap-3">
                         <div>
-                        <Input
-                            label="Title : "
-                            placeholder="Title"
-                            className="ps-2 mr-2 sm:mr-8"
-                            {...register("title", { required: 'Title is required' })}
-                        />
-                        {errors.title && <p className="text-red-600">{errors.title.message}</p>}
+                            <Input
+                                label="Title : "
+                                placeholder="Title"
+                                className="ps-2 mr-2 sm:mr-8"
+                                {...register("title", { required: 'Title is required' })}
+                            />
+                            {errors.title && <p className="text-red-600">{errors.title.message}</p>}
                         </div>
                         <Input
                             label="Slug : "
@@ -144,7 +149,7 @@ export default function PostForm({ post }) {
                         />
                         <Button type="submit" className="text-white bg-green-600 px-3 py-0.5 rounded-md hover:bg-green-500" Children={post ? "Update" : "Submit"} />
                     </div>
-                        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+                    {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
                 </div>
             </form>
         );

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { logOut } from '../../store/authSlice'
+import { deletePosts } from '../../store/postSlice'
 import authService from '../../appwrite/auth'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../Loader'
-
 
 const LogoutBtn = () => {
   const dispatch = useDispatch()
@@ -15,13 +15,13 @@ const LogoutBtn = () => {
     try {
       await authService.logout()
       dispatch(logOut())
+      dispatch(deletePosts())
       navigate('/')
     } catch (error) {
       console.error('Logout error:', error)
     }
     setLoader(false)
   }
-
 
   if (loader) return <Loader className={"h-8 w-8"} />
   else {

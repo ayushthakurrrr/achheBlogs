@@ -4,38 +4,49 @@ import appwriteService from "../appwrite/config";
 import { Button, Container } from '../components/index';
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deletePost } from "../store/postSlice";
 import Loader3 from "../components/Loader3";
 
 export default function Post() {
-    const [post, setPost] = useState(null);
+    // const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
-    const [loader, setLoader] = useState(true)
+    const dispatch = useDispatch();
+    const [loader, setLoader] = useState(false)
 
     const userData = useSelector((state) => state.auth.userData);
+    const posts = useSelector((state) => state.posts)
+    // console.log(posts, 'posts')
+    // console.log(slug, 'slug')
+    const post = posts.posts.find(item => item.$id === slug)
+    // const post = newArr[0]
+    // console.log(post, 'post')
 
     const isAuthor = post && userData ? post.UseId === userData.$id : false;
 
-    useEffect(() => {
-        if (slug) {
-            setLoader(true)
-            appwriteService.getPost(slug).then((post) => {
-                if (post) setPost(post);
-                else navigate("/");
-            })
-                .finally(() => { setLoader(false) })
-        } else navigate("/");
-    }, [slug, navigate]);
+    // console.log(isAuthor, 'isAUthor')
+    // useEffect(() => {
+    //     if (slug) {
+    //         setLoader(true)
+    //         appwriteService.getPost(slug).then((post) => {
+    //             if (post) setPost(post);
+    //             else navigate("/");
+    //         })
+    //             .finally(() => { setLoader(false) })
+    //     } else navigate("/");
+    // }, [slug, navigate]);
 
-    const deletePost = () => {
+    const deletepost = () => {
         setLoader(true);
         appwriteService.deletePost(post.$id).then((status) => {
             if (status) {
                 appwriteService.deleteFile(post.featuredImg);
+                dispatch(deletePost(post.$id));
                 navigate("/");
             }
         })
-        .finally(() => setLoader(false))
+            .finally(() => setLoader(false))
     };
 
     if (loader) {
@@ -46,6 +57,8 @@ export default function Post() {
             <div className="py-12">
                 <Container>
                     <div className="w-full relative flex justify-center bg-slate-200 rounded-xl pt-11 pb-11">
+                        {/* {console.log(post, 'post before img')} */}
+                        {/* {console.log(post.featuredImg, 'featuredImg before img')} */}
                         <img
                             src={appwriteService.previewFile(post.featuredImg)}
                             alt={post.title}
@@ -57,12 +70,12 @@ export default function Post() {
                                 <Link to={`/edit-post/${post.$id}`}>
                                     <Button bgColor="bg-green-600" className="text-white px-3 py-0.5 rounded-sm mr-3 hover:bg-green-500" Children={'Edit'} />
                                 </Link>
-                                <Button bgColor="bg-red-600" className="text-white px-3 py-0.5 rounded-sm hover:bg-red-500" onClick={deletePost} Children={'Delete'} />
+                                <Button bgColor="bg-red-600" className="text-white px-3 py-0.5 rounded-sm hover:bg-red-500" onClick={deletepost} Children={'Delete'} />
 
                             </div>
                         )}
                     </div>
-        
+
                     <div className="w-full text-center">
                         <h1 className="text-2xl font-bold mb-5">{post.title}</h1>
                     </div>
