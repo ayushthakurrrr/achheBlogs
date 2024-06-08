@@ -15,20 +15,32 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    // appwriteService.getPosts()
+    //         .then((data) => {
+    //           if (data) {
+    //             // setPosts(data.documents)
+    //             dispatch(setPosts(data.documents))
+    //           }
+    //           else {
+    //             // setPosts([])
+    //             dispatch(setPosts([]))
+    //           }
+    //         })
+
     authService.getCurrentUser()
       .then((data) => {
         if (data) {
-          appwriteService.getPosts()
-            .then((data) => {
-              if (data) {
-                // setPosts(data.documents)
-                dispatch(setPosts(data.documents))
-              }
-              else {
-                // setPosts([])
-                dispatch(setPosts([]))
-              }
-            })
+          // appwriteService.getPosts()
+          //   .then((data) => {
+          //     if (data) {
+          //       // setPosts(data.documents)
+          //       dispatch(setPosts(data.documents))
+          //     }
+          //     else {
+          //       // setPosts([])
+          //       dispatch(setPosts([]))
+          //     }
+            // })
           dispatch(logIn({ userData: data }))
         }
         else {
