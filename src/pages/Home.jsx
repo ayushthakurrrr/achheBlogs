@@ -18,7 +18,7 @@ function Home() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (posts.posts.length === 0) {
+        // if (posts.posts.length === 0) {
             setLoader(true)
             appwriteService.getPosts()
                 .then((data) => {
@@ -34,7 +34,7 @@ function Home() {
                 .finally(() => {
                     setLoader(false);
                 })
-        }
+        //}
     }, [])
     // console.log(posts, 989)
 

@@ -2,7 +2,7 @@ import React from "react";
 
 function Loader2() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 min-h-screen">
       <div className="group rounded-xl w-full overflow-hidden sm:flex bg-gray-200 animate-pulse mx-auto ">
         <div className="flex space-x-2 py-6  px-3 lg:px-0 flex-col md:flex-row w-full overflow-hidden">
           <div className="relative rounded-xl lg:mx-4 overflow-hidden w-full md:w-1/3 lg:w-1/4 h-48 md:h-48 lg:h-60 bg-gray-300"></div>
