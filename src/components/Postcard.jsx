@@ -6,7 +6,7 @@ import databaseServiceObj from '../appwrite/config'
 const Postcard = ({ $id, title, featuredImg, postedBy }) => {
 
     return (
-        <Link to={`/post/${$id}`}>
+        // <Link to={`/post/${$id}`}>
             <div className="group relative "> {/* Added overflow:hidden */}
                 <div className="mb-4 overflow-hidden">
                     <img
@@ -18,7 +18,7 @@ const Postcard = ({ $id, title, featuredImg, postedBy }) => {
                 <h2 className="text-lg font-bold">{title}</h2>
                 <h3 className="font-light">Posted by {postedBy}</h3>
             </div>
-        </Link>
+        // </Link>
     )
 }
 

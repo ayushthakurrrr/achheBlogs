@@ -54,7 +54,7 @@ export default function Post() {
     } else {
 
         return post ? (
-            <div className="py-12">
+            <div className="py-12 px-2 min-h-screen">
                 <Container>
                     <div className="w-full relative flex justify-center bg-slate-200 rounded-xl pt-11 pb-11">
                         {/* {console.log(post, 'post before img')} */}

@@ -47,7 +47,7 @@ function Home() {
 
     if (!status) {
         return (
-            <div className='h-96 my-20 flex justify-center'>
+            <div className='flex justify-center min-h-screen'>
                 <Link className='font-bold text-3xl hover:text-gray-600 content-center' to='/login'>
                     Login to see blogs.
                 </Link>
@@ -56,7 +56,7 @@ function Home() {
     }
     else if (status && posts.length === 0) {
         return (
-            <div className='h-96 my-20 flex justify-center'>
+            <div className='flex justify-center min-h-screen'>
                 <Link className='font-bold text-3xl hover:text-gray-600 ' to='/add-post'>
                     Currently no posts available, Add some.
                 </Link>
@@ -65,14 +65,14 @@ function Home() {
     }
     else {
         return (
-            <div className='w-full py-12 px-2'>
+            <div className='w-full py-12 px-4 min-h-screen'>
                 <Container >
                     <div className='flex flex-wrap justify-center gap-8'>
                         {/* {console.log(posts.posts)} */}
                         {posts.posts.map((post) => (
-                            <div key={post.$id} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200  shadow-lg shadow-[#6a5acd] rounded-md'>
+                            <Link key={post.$id} to={`/post/${post.$id}`} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200  shadow-lg shadow-[#6a5acd] rounded-md'>
                                 <Postcard {...post} />
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </Container>
