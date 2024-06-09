@@ -9,6 +9,7 @@ import { logIn, logOut } from './store/authSlice';
 import { Footer, Header } from './components';
 import { Outlet } from 'react-router-dom';
 import Loader2 from './components/Loader2';
+import useUpload from './hooks/useUpload';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -30,18 +31,19 @@ function App() {
     authService.getCurrentUser()
       .then((data) => {
         if (data) {
-          // appwriteService.getPosts()
-          //   .then((data) => {
-          //     if (data) {
-          //       // setPosts(data.documents)
-          //       dispatch(setPosts(data.documents))
-          //     }
-          //     else {
-          //       // setPosts([])
-          //       dispatch(setPosts([]))
-          //     }
-            // })
           dispatch(logIn({ userData: data }))
+          appwriteService.getPosts()
+            .then((data) => {
+              if (data) {
+                // setPosts(data.documents)
+                dispatch(setPosts(data.documents))
+              }
+              else {
+                // setPosts([])
+                dispatch(setPosts([]))
+              }
+            })
+          
         }
         else {
           dispatch(logOut())

@@ -6,6 +6,9 @@ import { logIn as storeLogin } from '../store/authSlice'
 import authService from '../appwrite/auth'
 import { Input, Button, Logo } from './index'
 import Loader2 from './Loader2'
+import useUpload from '../hooks/useUpload'
+import appwriteService from '../appwrite/config'
+import { setPosts } from '../store/postSlice'
 
 const Login = () => {
   const [error, setError] = useState('')
@@ -26,7 +29,17 @@ const Login = () => {
         if (userData) {
           dispatch(storeLogin({ userData: userData }))
         }
-
+        appwriteService.getPosts()
+            .then((data) => {
+              if (data) {
+                // setPosts(data.documents)
+                dispatch(setPosts(data.documents))
+              }
+              else {
+                // setPosts([])
+                dispatch(setPosts([]))
+              }
+            })
         navigate('/')
       }
     } catch (error) {

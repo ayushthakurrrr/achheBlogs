@@ -9,41 +9,42 @@ import Loader2 from '../components/Loader2';
 
 function Home() {
     // const [posts, setPosts] = useState([])
-    const [loader, setLoader] = useState(false)
+   // const [loader, setLoader] = useState(false)
     const status = useSelector(state => state.auth.status)
     const posts = useSelector(state => state.posts)
-    // { console.log(posts) }
+    //{ console.log(posts,'posts') }
     // { console.log(posts.posts.length, 'length') }
     // console.log("render check 1")
     const dispatch = useDispatch()
 
-    useEffect(() => {
+   // useEffect(() => {
         // if (posts.posts.length === 0) {
-            setLoader(true)
-            appwriteService.getPosts()
-                .then((data) => {
-                    if (data) {
-                        // setPosts(data.documents)
-                        dispatch(setPosts(data.documents))
-                    }
-                    else {
-                        // setPosts([])
-                        dispatch(setPosts([]))
-                    }
-                })
-                .finally(() => {
-                    setLoader(false);
-                })
+            // setLoader(true)
+            // appwriteService.getPosts()
+            //     .then((data) => {
+            //         console.log(data,'data')
+            //         if (data) {
+            //             // setPosts(data.documents)
+            //             dispatch(setPosts(data.documents))
+            //         }
+            //         else {
+            //             // setPosts([])
+            //             dispatch(setPosts([]))
+            //         }
+            //     })
+            //     .finally(() => {
+            //         setLoader(false);
+            //     })
         //}
-    }, [])
+   // }, [])
     // console.log(posts, 989)
 
-    if (loader) {
-        return (
-            <Loader2 />
-        )
-    }
-    else {
+    // if (loader) {
+    //     return (
+    //         <Loader2 />
+    //     )
+    // }
+    // else {
 
     if (!status) {
         return (
@@ -80,6 +81,6 @@ function Home() {
         )
     }
 }
- }
+ //}
 
 export default Home
