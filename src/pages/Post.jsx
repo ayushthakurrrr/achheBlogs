@@ -62,7 +62,7 @@ export default function Post() {
                         <img
                             src={appwriteService.previewFile(post.featuredImg)}
                             alt={post.title}
-                            className="rounded-lg"
+                            className="rounded-lg max-h-screen"
                         />
 
                         {isAuthor && (
