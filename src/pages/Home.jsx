@@ -32,11 +32,16 @@ function Home() {
             <div className='w-full py-12 px-4 min-h-screen'>
                 <Container >
                     <div className='flex flex-wrap justify-center gap-8'>
-                        {posts.posts.map((post) => (
-                            <Link key={post.$id} to={`/post/${post.$id}`} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200  shadow-lg shadow-[#6a5acd] rounded-md'>
-                                <Postcard {...post} />
-                            </Link>
-                        ))}
+                        {posts.posts.map((post) => {
+                            if (post.Status === 'active') {
+                                return (
+                                    <Link key={post.$id} to={`/post/${post.$id}`} className='sm:w-1/4 w-full sm:min-w-64 px-3 py-5 flex justify-center items-center  bg-slate-200  shadow-lg shadow-[#6a5acd] rounded-md'>
+                                        <Postcard {...post} />
+                                    </Link>)
+                            } else {
+                                return null
+                            }
+                        })}
                     </div>
                 </Container>
             </div>

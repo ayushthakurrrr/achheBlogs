@@ -68,35 +68,20 @@ export class DatabaseService {
         }
     }
 
-    async getPost(slug) {
-        try {
-            return await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
-        } catch (error) {
-            console.log("Error at getPost :: ", error)
-            return false
-        }
-    }
+    // async getPost(slug) {
+    //     try {
+    //         return await this.databases.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
+    //     } catch (error) {
+    //         console.log("Error at getPost :: ", error)
+    //         return false
+    //     }
+    // }
 
-    async getPosts(queries = [Query.equal('Status', 'active')]) {
+    async getPosts() {
         try {
             let postss = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                queries
-            )
-            return postss
-        } catch (error) {
-            console.log("Error at getPosts :: ", error)
-            return false
-        }
-    }
-
-    async myposts(userId, queries) {
-        try {
-            let postss = await this.databases.listDocuments(
-                conf.appwriteDatabaseId,
-                conf.appwriteCollectionId,
-                queries = [Query.equal('UseId', userId)]
             )
             return postss
         } catch (error) {
