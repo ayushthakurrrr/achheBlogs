@@ -9,25 +9,12 @@ import { logIn, logOut } from './store/authSlice';
 import { Footer, Header } from './components';
 import { Outlet } from 'react-router-dom';
 import Loader2 from './components/Loader2';
-import useUpload from './hooks/useUpload';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // appwriteService.getPosts()
-    //         .then((data) => {
-    //           if (data) {
-    //             // setPosts(data.documents)
-    //             dispatch(setPosts(data.documents))
-    //           }
-    //           else {
-    //             // setPosts([])
-    //             dispatch(setPosts([]))
-    //           }
-    //         })
-
     authService.getCurrentUser()
       .then((data) => {
         if (data) {
@@ -35,15 +22,12 @@ function App() {
           appwriteService.getPosts()
             .then((data) => {
               if (data) {
-                // setPosts(data.documents)
                 dispatch(setPosts(data.documents))
               }
               else {
-                // setPosts([])
                 dispatch(setPosts([]))
               }
             })
-          
         }
         else {
           dispatch(logOut())
@@ -61,7 +45,6 @@ function App() {
       <Footer />
     </div>
   ) : <Loader2 />
-
 }
 
 export default App

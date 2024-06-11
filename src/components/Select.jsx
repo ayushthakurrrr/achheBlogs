@@ -10,7 +10,6 @@ const Select = ({
     const id = useId();
     return (
         <div>
-            {/* Todo label && <label></label> */}
             <label htmlFor="id"></label>
             <select id={id} {...props} ref={ref} className={`${className}`}>
                 {options ? (options.map((item) => (

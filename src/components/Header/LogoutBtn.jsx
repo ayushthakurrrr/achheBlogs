@@ -4,14 +4,13 @@ import { logOut } from '../../store/authSlice'
 import { deletePosts } from '../../store/postSlice'
 import authService from '../../appwrite/auth'
 import { useNavigate } from 'react-router-dom'
-import Loader from '../Loader'
 
 const LogoutBtn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [loader, setLoader] = useState(false)
+  const [disabled, setDisabled] = useState(false)
   const logoutHandler = async () => {
-    setLoader(true)
+    setDisabled(true)
     try {
       await authService.logout()
       dispatch(logOut())
@@ -20,14 +19,12 @@ const LogoutBtn = () => {
     } catch (error) {
       console.error('Logout error:', error)
     }
-    setLoader(false)
+    setDisabled(false)
   }
 
-  if (loader) return <Loader className={"h-8 w-8"} />
-  else {
   return (
-      <button className='bg-[#E32636] text-white px-3 pb-1 py-0.5 rounded-md hover:bg-[#F53E4D]' onClick={logoutHandler}>Logout</button>
-    )}
+    <button disabled={disabled} className='bg-[#E32636] text-white px-3 pb-1 py-0.5 rounded-md hover:bg-[#F53E4D]' onClick={logoutHandler}>{disabled ? <div className='flex justify-center p-0.5'><div className={`animate-spin rounded-full h-5 w-5 border-t-2 border-white`}></div></div> : <div>Logout</div>}</button>
+  )
 }
 
 export default LogoutBtn

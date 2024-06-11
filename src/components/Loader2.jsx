@@ -57,8 +57,6 @@ function Loader2() {
           </div>
         </div>
       </div>
-      
-     
     </div>
   );
 }

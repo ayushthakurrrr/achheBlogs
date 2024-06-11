@@ -6,10 +6,11 @@ const Button = ({
     textColor = 'white',
     bgColor = 'blue',
     className = '',
+    disabled = false,
     ...props
 }) => {
     return (
-        <button className={`${textColor} ${bgColor} ${className}`} type={type} {...props}>{Children}</button>
+        <button className={`p-1 ${textColor} ${bgColor} ${className}`} type={type} disabled={disabled} {...props}>{disabled ? <div className='flex justify-center'><div className={`animate-spin rounded-full h-5 w-5 border-t-2 border-white`}></div></div> : Children}</button>
     )
 }
 

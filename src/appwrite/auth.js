@@ -16,7 +16,6 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name)
             if (userAccount) {
-                
                 return this.login({ email, password });
             }
             else {
@@ -40,7 +39,7 @@ export class AuthService {
 
     async logout() {
         try {
-            return await this.account.deleteSessions() // changed deleteSession to deleteSessions
+            return await this.account.deleteSession('current')
         } catch (error) {
             console.log("Error at logOut :: ", error)
         }
