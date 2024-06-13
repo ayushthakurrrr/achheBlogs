@@ -36,7 +36,7 @@ function Home() {
             </section >
         )
     }
-    else if (status && reversedPosts.length === 0) {
+    else if (status && postsArr.length === 0) {
         return (
             <div className='flex justify-center min-h-screen'>
                 <Link className='font-bold text-3xl hover:text-gray-600 ' to='/add-post'>
