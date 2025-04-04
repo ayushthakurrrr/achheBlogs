@@ -122,7 +122,7 @@ export class DatabaseService {
 
     previewFile(fileId) {
         try {
-            return this.storage.getFilePreview(
+            return this.storage.getFileView(
                 conf.appwriteBucketId,
                 fileId
             )

@@ -21,7 +21,6 @@ export class AuthService {
             else {
                 return userAccount
             }
-
         } catch (error) {
             throw error
         }
