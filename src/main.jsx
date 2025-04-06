@@ -84,3 +84,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </PersistGate>
   </Provider>
 )
+
+const loader = document.getElementById('initial-loader');
+if (loader) {
+  loader.remove();
+}
